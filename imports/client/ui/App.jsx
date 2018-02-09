@@ -37,7 +37,7 @@ import {
 } from './Mostraris.jsx';
 import * as Qs from './Queries.jsx';
 import FootrAdaptat from './Footer.jsx';
-//import FreeContent from './FreeContent.jsx';
+import HeaderAdaptat from './Header.jsx';
 import MainContentProducte from './DetallProducte.jsx';
 import * as Stylo from './StyledComponents.jsx';
 
@@ -65,6 +65,12 @@ const NavbarAdaptatAmbSubcategories = graphql(Qs.SubcategoriesQuery, {
         variables
     }
 })(NavbarAdaptat);
+
+const HeaderAdaptatAmbSubcategories = graphql(Qs.SubcategoriesQuery, {
+    options: {
+        variables
+    }
+})(HeaderAdaptat);
 
 export default class App extends Component {
     constructor(props) {
@@ -358,6 +364,11 @@ export default class App extends Component {
             <Router>
                 <Stylo.LO>
                     <Route path="/" render={() => (
+                        <HeaderAdaptatAmbSubcategories
+                            subcategoryIdAlState={this.subcategoryIdAlState}
+                        />
+                    )}/>
+                    <Route path="/" render={() => (
                             <NavbarAdaptatAmbSubcategories
                                 subcategoryIdAlState={this.subcategoryIdAlState}
                                 fluid
@@ -373,25 +384,15 @@ export default class App extends Component {
                                 filtreColor={this.state.filtreColor}
                             />
                     )}/>
-
                     <Route exact path="/" render={() => ([
-                        <Stylo.MainVideo
-                            key="video"
-                        >
-                            {conf.video_latinmoda}
-                        </Stylo.MainVideo>
-                        ,
                         <Stylo.MainContent
                             key="content"
-                        >
-    		              <h1>{conf.subtituloPagina}</h1>
-    		              <h2>{conf.titulo_contenido}</h2>
-    		              {conf.texto_contenido}
-    		              {conf.bloque_info}
-
+                        > 
+    		              <h2>{conf.subtituloPagina}</h2>
+                          <h3>{conf.titulo_contenido}</h3>
     		            </Stylo.MainContent>
                     ])}/>
-
+                    
                     <Route exact path="/categoria/:subcategoryId" render={({ match, history, location }) => {
                         let
                             variables = Object.assign({}, this.state.variables, {

@@ -66,73 +66,36 @@ export default class FootrAdaptat extends Component {
         return (
             <div>
                 <Stylo.footer size="mega">
-                    <FooterSection type="middle">
-                        <FooterDropDownSection title="Información">
-                            <FooterLinkList>
-                                <a href=""
-                                  data-toggle="modal"
-                                  data-target="#about">
-                                  Quiénes Somos
-                                </a>
-                                <a href=""
-                                  data-toggle="modal"
-                                  data-target="#terms">
-                                  Términos y Condiciones
-                                </a>
-                                <a href=""
-                                  data-toggle="modal"
-                                  data-target="#cookies">
-                                  Políticas de Cookies
-                                </a>
-                                <a href=""
-                                  data-toggle="modal"
-                                  data-target="#faq">
-                                  FAQ
-                                </a>
-                            </FooterLinkList>
-                        </FooterDropDownSection>
-                        <FooterDropDownSection title="Contáctanos">
-                            <FooterLinkList>
-                                <a href="#">{conf.telContacto}</a>
-                                <a href="#">{conf.emailContacto}</a>
-                                <a href={`https://api.whatsapp.com/send?phone=${conf.whatsappMsg}&text=Hola%2C%20necesito%20información`}>Click para WhatsApp</a>
-                            </FooterLinkList>
-                        </FooterDropDownSection>
+                    <ul className="nav navbar-nav navbar-right">
+                        <Stylo.liNav>
+                            <Stylo.aLink className="emailytel">{conf.emailContacto}</Stylo.aLink>
+                        </Stylo.liNav>
+                        <Stylo.liNav>
+                            <Stylo.aLink className="emailytel">{conf.telContacto}</Stylo.aLink>
+                        </Stylo.liNav>
+                        <Stylo.liNav>
+                          <Stylo.aLink href="https://facebook.com/latinmoda" target="_blank"> <i className="fa fa-facebook fa-2x"></i></Stylo.aLink>
+                        </Stylo.liNav>
+                        <Stylo.liNav>
+                          <Stylo.aLink href="https://twitter.com/latinmoda" target="_blank"> <i className="fa fa-twitter fa-2x"></i></Stylo.aLink>
+                        </Stylo.liNav>
+                        <Stylo.liNav>
+                          <Stylo.aLink href="https://instagram.com/latinmoda_oficial" target="_blank"> <i className="fa fa-instagram fa-2x"></i></Stylo.aLink>
+                        </Stylo.liNav>
+                        <Stylo.liNav>
+                          <Stylo.aLink href={`https://api.whatsapp.com/send?phone=${conf.whatsappMsg}&text=Hola%2C%20necesito%20información`} target="_blank"> <i className="fa fa-whatsapp fa-2x"></i></Stylo.aLink>
+                        </Stylo.liNav>
+                    </ul>
 
-                        <FooterDropDownSection title="Nuestras Tiendas">
-                            <FooterLinkList>
-                                <a href="http://fajascolombianas.es" target="_blank">Fajas Colombianas</a>
-                                <a href="http://jeanscolombianos.es" target="_blank">Jeans Colombianos</a>
-                                <a href="http://vestidosdefiestacolombianos.es" target="_blank">Vestidos de Fiesta</a>
-                                <a href="http://ropacolombianaenrebajas.com" target="_blank">Outlet</a>
-                            </FooterLinkList>
-                        </FooterDropDownSection>
-
-                        <FooterDropDownSection title="Escríbenos">
-                            <form >
-                              <div className="form-group">
-                                <label htmlFor="emailCliente">Dirección de Email:</label>
-                                <input type="email" className="form-control" id="emailCliente" placeholder="Introduzca su Email" ref={input => this.from = input} />
-                              </div>
-                              <div className="form-group">
-                                <label htmlFor="mensajeCliente">Mensaje:</label>
-                                <textarea className="form-control" id="mensajeCliente" placeholder="Escriba su Mensaje" ref={ta => this.text = ta }/>
-                              </div>
-                              <button
-                                className="btn btn-default"
-                                onClick={(ev)=>{
-                                    ev.preventDefault();
-                                    ev.stopPropagation();
-                                    Meteor.call('enviaCorreu', this.from.value, this.text.value );
-                                    alert("Mensaje enviado. ¡Gracias por contactar con nosotros!");
-                                }}
-                              >Enviar</button>
-                            </form>
-                        </FooterDropDownSection>
-                    </FooterSection>
+                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                    </button>
 
 
-                    <FooterSection type="bottom" logo={conf.tituloPagina}>
+                    <FooterSection type="bottom">
                       <p>{`Copyright © ${dat.getFullYear()} - Ropa Colombiana en España.`}</p>
                     </FooterSection>
 

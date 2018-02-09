@@ -10,9 +10,8 @@ export const
         display: grid;
         grid-template-columns: 0.8fr 1fr 1.2fr;
         grid-template-areas:
-            "nb nb nb"
-            ". v ."
-            ". c ."
+            "h . nb"
+            ". c nb"
             ${bloCol}
             "min fot tex"
             "ft ft ft"
@@ -22,38 +21,6 @@ export const
         background-repeat: ${conf.backgroundRepeat};
         background-attachment: ${conf.backgroundAttachment};
     `,
-
-    // MainLayout = styled.div.attrs({
-    //   className: 'container'
-    // })`
-    //     width: 100%;
-    //     height: 100%;
-    //     padding: 0px;
-    //     display: grid;
-    //     grid-template-columns: auto auto auto;
-    //     grid-template-rows: auto auto auto;
-    //     grid-template-areas:
-    //     "navbar navbar navbar"
-    //     "filtro content content"
-    //     ${conf.layoutTemplateArea}
-    //     "present present present"
-    //     "footer footer footer";
-    //     background-image: url(/${conf.fonsPrincipal});
-    //     background-size: ${conf.backgroundSize};
-    //     background-repeat: ${conf.backgroundRepeat};
-    //     background-attachment: ${conf.backgroundAttachment};
-    // `,
-
-    // HomeLayout = styled.div.attrs({
-    //   className: 'container'
-    // })`
-    //   display: grid;
-    //   grid-template-columns: auto;
-    //   grid-template-rows: auto auto;
-    //   grid-template-areas:
-    //   "video"
-    //   "content"
-    // `,
 
     ProductsLayout = styled.div`
       display: grid;
@@ -65,13 +32,12 @@ export const
 
     MainNavBar = styled.nav`
         grid-area: nb;
-        //position: sticky;
         top: 0;
         height: min-height;
-        background-color: rgba(255, 255, 255, 0.25);
         transition: all 1s ease;
         z-index: 100;
         font-family: 'Comfortaa', sans-serif;
+        margin-left:5%;
     `,
 
     PosicionFiltro = styled.div`
@@ -138,8 +104,8 @@ export const
     NavTitle = styled.h1`
         margin-top: 0;
         font-size: 2.5em;
-        color: black;
-        text-shadow: 8px 5px 10px black;
+        color: white;
+        text-shadow: 8px 5px 10px white;
         font-family: 'Comfortaa', sans-serif;
         font-weight: 700;
 
@@ -152,36 +118,35 @@ export const
         }
     `,
 
-    MainVideo = styled.div`
-      grid-area: v;
-      padding: 20px;
-    `,
-
     MainContent = styled.div.attrs({
       //className: 'container'
       className: 'maincontent'
     })`
         grid-area: c;
 
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10%;
+        padding-top:30%;
+        margin-bottom: 5.8%;
 
         > h1 {
           font-family: 'Comfortaa', sans-serif;
-          font-size: 2.5em;
+          font-size: 3em;
           font-weight: 700;
+          color:white;
         }
 
         > h2 {
           font-family: 'Comfortaa', sans-serif;
           font-size: 2em;
           font-weight: 500;
+          color: white;
         }
 
         > h3 {
           font-family: 'Comfortaa', sans-serif;
           font-size: 1.7em;
           font-weight: 300;
+          color:white;
         }
 
         p {
@@ -195,7 +160,7 @@ export const
       padding: 15px;
       // padding-top: 7px !important;
       // padding-bottom: 7px !important;
-      color: black;
+      color: white;
       font-size: 1.25em;
 	    text-shadow: 0 1px 0 rgba(255,255,255,.25);
       font-family: 'Roboto', sans-serif;
@@ -228,6 +193,13 @@ export const
     footer = styled.footer.attrs({
       className: 'mdl-mega-footer'
     })`
-      background-color: black;
+      background-color: rgba(255, 255, 255, 0.25);
     `
+    ,
+
+    header = styled.header`
+      grid-area: h;
+      position: relative;
+      margin-bottom:20%;
+      `
 ;

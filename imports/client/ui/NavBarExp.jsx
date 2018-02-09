@@ -61,45 +61,51 @@ export default class NavbarAdaptat extends Component {
             return (<div>Ocurrió un error inesperado.</div>);
         }
 
-        return (
+        /*return (
             <Stylo.MainNavBar id="menu" className="navbar" role="navigation">
                 <div className="container-fluid">
-                    <div className="navbar-header col-xs-12">
-                        <Stylo.aBrand href="/" >
-                          <Stylo.NavTitle>{conf.tituloPagina}</Stylo.NavTitle>
-                        </Stylo.aBrand>
-                          <ul className="nav navbar-nav navbar-right">
-                            <Stylo.liNav>
-                                <Stylo.aLink className="emailytel">{conf.emailContacto}</Stylo.aLink>
-                            </Stylo.liNav>
-                            <Stylo.liNav>
-                                <Stylo.aLink className="emailytel">{conf.telContacto}</Stylo.aLink>
-                            </Stylo.liNav>
-                            <Stylo.liNav>
-                              <Stylo.aLink href="https://facebook.com/latinmoda" target="_blank"> <i className="fa fa-facebook fa-2x"></i></Stylo.aLink>
-                            </Stylo.liNav>
-                            <Stylo.liNav>
-                              <Stylo.aLink href="https://twitter.com/latinmoda" target="_blank"> <i className="fa fa-twitter fa-2x"></i></Stylo.aLink>
-                            </Stylo.liNav>
-                            <Stylo.liNav>
-                              <Stylo.aLink href="https://instagram.com/latinmoda_oficial" target="_blank"> <i className="fa fa-instagram fa-2x"></i></Stylo.aLink>
-                            </Stylo.liNav>
-                            <Stylo.liNav>
-                              <Stylo.aLink href={`https://api.whatsapp.com/send?phone=${conf.whatsappMsg}&text=Hola%2C%20necesito%20información`} target="_blank"> <i className="fa fa-whatsapp fa-2x"></i></Stylo.aLink>
-                            </Stylo.liNav>
-                        </ul>
-
-                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-
-                    </div>
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
-                            {
+                            <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#">Vestidos</a>
+                                <ul className="Dropdown-menu">
+                                    {
+                                        this.props.data.subcategories.map(
+                                            (v,i,a) => {
+                                                return (
+                                                  <Stylo.liNav>
+                                                    <LinkContainer key={i} to={`/categoria/${v.nom_categoria.trim().toLowerCase().replace(/\s+/g, '.')}.${v.categoriaId}`}>
+                                                        <Stylo.aLink
+                                                            eventKey={i}
+                                                            onClick={this.canviaSubcat}
+                                                            data-subcategory-id={v.categoriaId}
+                                                        >                   {v.nom_categoria}
+                                                        </Stylo.aLink>
+                                                    </LinkContainer>
+                                                  </Stylo.liNav>
+                                                )
+                                            }
+                                        )
+                                    }
+                                </ul>
+                            </li>
+                            <li><a href="#">Contactanos</a></li>
+                            <li><a href="#">Escribenos</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </Stylo.MainNavBar>
+        );*/
+        return (
+            <Stylo.MainNavBar id="menu" className="navbar" role="navigation">
+                <ul className="main-menu clearfix">
+                    <li><a href="#">Menu
+                            <span className="drop-icon">▾</span>
+                            <label title="Toggle Drop-down" className="drop-icon" htmlFor="sm1">▾</label>
+                        </a>
+                        <input type="checkbox" id="sm1"/>
+                        <ul className="sub-menu">
+                           {
                                 this.props.data.subcategories.map(
                                     (v,i,a) => {
                                         return (
@@ -118,9 +124,8 @@ export default class NavbarAdaptat extends Component {
                                 )
                             }
                         </ul>
-
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </Stylo.MainNavBar>
         );
     }
