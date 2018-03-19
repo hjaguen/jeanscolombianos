@@ -7,7 +7,12 @@ export default class MainContentProducte extends Component {
         super(props, context);
 
         this.state = {
-            selectedImgSrc: ""
+            selectedImgSrc: "",
+            selectedProduct: {},
+            estado: "ADD TO CART", 
+            cart: [],
+            cantidad:1,
+            cartBounce: false,
         };
 
     //    this.canviaImatge = this.canviaImatge.bind(this);
@@ -19,6 +24,85 @@ export default class MainContentProducte extends Component {
     //     })
     // }
 
+     handleAddToCart(selectedProducts){
+        let cartItem = this.state.cart;
+        let productID = selectedProducts.ref;
+        let productQty = selectedProducts.cantidad;
+        if(this.checkProduct(productID)){
+            console.log('hi');
+            let index = cartItem.findIndex((x => x.id == productID));
+            cartItem[index].cantidad = Number(cartItem[index].cantidad) + Number(productQty);
+            this.setState({
+                cart: cartItem
+            })
+        } else {
+            cartItem.push(selectedProducts);
+        }
+        this.setState({
+            cart : cartItem,
+            cartBounce: true,
+        });
+        setTimeout(function(){
+            this.setState({
+                cartBounce:false,
+                cantidad: 1
+            });
+            console.log(this.state.cantidad);
+            console.log(this.state.cart);
+    }.bind(this),1000);  
+        this.sumTotalItems(this.state.cart);
+    }
+    handleRemoveProduct(id, e){
+        let cart = this.state.cart;
+        let index = cart.findIndex((x => x.id == id));
+        cart.splice(index, 1);
+        this.setState({
+            cart: cart
+        })
+        this.sumTotalItems(this.state.cart);
+        e.preventDefault();
+    }
+    checkProduct(productID){
+        let cart = this.state.cart;
+        return cart.some(function(item) {
+            return item.id === productID;
+        }); 
+    }
+    sumTotalItems(){
+        let total = 0;
+        let cart = this.state.cart;
+        total = cart.length;
+        this.setState({
+            totalItems: total
+        })
+    }
+
+    addToCart(imagen, nombre, ref, marca, color, talla, cantidad){
+        this.setState({
+            selectedProduct: {
+                imagen: imagen,
+                nombre: nombre,   //Descripcion
+                ref: ref,       //Referencia
+                marca:marca,    //nom_marca
+                color: color,   // num_color, label_color
+                talla: talla,   // label_talla
+                cantidad: cantidad  //quantity
+            }
+        }, function(){
+            this.handleAddToCart(this.state.selectedProduct);
+        })
+        this.setState({
+            estado: "✔ ADDED"
+        }, function(){
+            setTimeout(() => {
+                this.setState({ 
+                    estado: "ADD TO CART",
+                    selectedProduct: {} 
+                });
+            }, 5000);
+        });
+    }
+
     render() {
 
         console.dir(this.props.data);
@@ -26,6 +110,13 @@ export default class MainContentProducte extends Component {
 // gridTemplateColumns: `1fr 1fr`,
 // gridTemplateRows: `auto`,
 // gridAutoFlow: `row dense`,
+        let imagen = this.props.imagen_min;
+        let nombre = this.props.descripcion;   //Descripcion
+        let ref = this.props.referencia;       //Referencia
+        let marca =this.props.nom_marca;    //nom_marca
+        let color = this.props.num_color;   // num_color, label_color
+        let talla = this.props.label_talla;   // label_talla
+        let cantidad = this.props.cantidad;  //quantity
         return (
             [
                 <div
@@ -162,7 +253,7 @@ export default class MainContentProducte extends Component {
 
 
                                        return (
-                                           <span
+                                           <button
                                                key={i}
                                                style={{
                                                    background: `${v.num_color}`,
@@ -177,9 +268,12 @@ export default class MainContentProducte extends Component {
                                                    fontWeight: `bold`,
                                                    color: `#${invertHex}`
                                                }}
-                                               title={v.labelColor}
+                                               title="Agregar a Pedido" //{v.labelColor}
+                                               data-toggle="modal"
+                                               data-target="#count"
+                                               //onClick={this.addToCart.bind(this, imagen, nombre, ref, marca, color, talla, cantidad)}
                                             >{v.label_talla}
-                                            </span>
+                                            </button>
                                        );
                                    }
                                )
@@ -188,6 +282,27 @@ export default class MainContentProducte extends Component {
                           </div>
                         : null
                     }
+                </div>
+
+                ,
+
+                <div className="modal fade" id="count" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 className="modal-title" id="myModalLabel">¿Cuantos productos desea añadir al pedido?</h4>
+                      </div>
+                      <div className="modal-body">
+                        {/*<Counter cantidad={cantidad} updateQuantity={this.updateQuantity} resetQuantity={this.resetQuantity}/>*/}
+                        <div><input defaultValue="1" id="cantidad" /></div>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-success" onClick={this.addToCart.bind(this, imagen, nombre, ref, marca, color, talla, cantidad)} data-dismiss="modal">Agregar</button>
+                        {/*<button type="button" className="btn btn-default" data-dismiss="modal">Cerrar</button>*/}
+                      </div>
+                    </div>
+                  </div>
                 </div>
             ]
         );
