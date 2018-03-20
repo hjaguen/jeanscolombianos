@@ -8,12 +8,12 @@ export const
     LO = styled.div`
         padding: 0px;
         display: grid;
-        grid-template-columns: 0.8fr 1fr 1.2fr;
+        grid-template-columns: 1.25fr 1.25fr 0.5fr;
         grid-template-areas:
-            "h . nb"
-            ". c nb"
+            "h h nb"
+            
             ${bloCol}
-            "min fot tex"
+            "fot tex min "
             "ft ft ft"
         ;
         background-image: url(/${conf.fonsPrincipal});
@@ -38,6 +38,8 @@ export const
         z-index: 100;
         font-family: 'Comfortaa', sans-serif;
         margin-left:5%;
+        position:sticky;
+        float:rigth;
     `,
 
     PosicionFiltro = styled.div`
@@ -45,18 +47,71 @@ export const
     `,
 
 
+    // Filtro = styled.div.attrs({
+    //   className: 'filtro'
+    // })`
+    //     width: 90%;
+    //     max-width: 300px;
+    //     background: rgba(255, 255, 255, 0.25);
+    //     margin: 2em 2em;
+    //     padding: 2em;
+    //     borderRadius: 1em;
+    //     position: -webkit-sticky;
+    //     position: sticky;
+    //     top: 160px;
+
+    //     * {
+    //         transition: all 1s ease;
+    //     }
+
+    //     @media (max-width: 500px) {
+    //         //> :not(.mobile), .Select {
+    //         .amaga {
+    //             height: 0;
+    //             margin: 0 !important;
+    //             padding: 0;
+    //             opacity: 0;
+    //             visibility: hidden;
+    //         }
+
+    //         .mostra {
+    //             margin: 2em 2em;
+    //             //padding: 2em;
+    //             height: auto;
+    //             opacity: 1;
+    //             visibility: visible;
+    //         }
+
+    //         .filtreC.mostra {
+    //             margin: 0;
+    //             margin-top: 3em;
+    //         }
+    //     }
+
+    //     @media (min-width: 500px) {
+    //         .mobile {
+    //             height: 0;
+    //             margin: 0;
+    //             padding: 0;
+    //             opacity: 0;
+    //             visibility: hidden;
+    //         }
+    //     }
+    // `,
     Filtro = styled.div.attrs({
-      className: 'filtro'
-    })`
+        className: 'filtro'
+      })`
         width: 90%;
-        max-width: 300px;
-        background: rgba(255, 255, 255, 0.25);
-        margin: 2em 2em;
-        padding: 2em;
-        borderRadius: 1em;
-        position: -webkit-sticky;
-        position: sticky;
-        top: 160px;
+        background: rgba(0,0,0,.5);
+        -webkit-transition: opacity 300ms ease;
+        -moz-transition: opacity 300ms ease;
+        -o-transition: opacity 300ms ease;
+        transition: opacity 300ms ease;
+        position: relative;
+        //margin-top: 2%;
+        //top:22%;
+        // padding-top:2em;
+        z-index:400;
 
         * {
             transition: all 1s ease;
@@ -73,7 +128,7 @@ export const
             }
 
             .mostra {
-                margin: 2em 2em;
+                margin: 1.5em 2em;
                 //padding: 2em;
                 height: auto;
                 opacity: 1;
@@ -81,8 +136,8 @@ export const
             }
 
             .filtreC.mostra {
-                margin: 0;
-                margin-top: 3em;
+                //margin: 0;
+                margin-top: 1em;
             }
         }
 
@@ -175,11 +230,30 @@ export const
     aBrand = styled.a.attrs({
       className: 'navbar-brand nombre-marca'
     })`
-      margin-bottom: 20px;
+      margin-top: 20%;
+      font-size: 2.5em;
+      margin-left:10%;
+      margin-bottom:0.3%;
+     
 
       h1 {
           transition: color 3s;
       }
+      h2 {
+        color: white;
+        //font-size:1.5em;
+      }
+      h3 {
+        color:white;
+        //font-size:1.5em;
+      }
+    `,
+
+    aBrand2 = styled.a.attrs({
+      className: 'navbar-brand nombre-marca'
+    })` 
+
+      
     `,
 
     liNav = styled.li`
@@ -200,6 +274,14 @@ export const
     header = styled.header`
       grid-area: h;
       position: relative;
-      margin-bottom:20%;
+      margin-bottom:5%;
+      min-height:33.5em;
+      `
+      ,
+
+      header2 = styled.header`
+      grid-area: h;
+      position: relative;
+      margin-bottom:5%;
       `
 ;

@@ -38,6 +38,7 @@ import {
 import * as Qs from './Queries.jsx';
 import FootrAdaptat from './Footer.jsx';
 import HeaderAdaptat from './Header.jsx';
+import HeaderCategorie from './Header2.jsx';
 import MainContentProducte from './DetallProducte.jsx';
 import * as Stylo from './StyledComponents.jsx';
 
@@ -68,11 +69,11 @@ const NavbarAdaptatAmbSubcategories = graphql(Qs.SubcategoriesQuery, {
     }
 })(NavbarAdaptat);
 
-const HeaderAdaptatAmbSubcategories = graphql(Qs.SubcategoriesQuery, {
-    options: {
-        variables
-    }
-})(HeaderAdaptat);
+// const HeaderAdaptatAmbSubcategories = graphql(Qs.SubcategoriesQuery, {
+//     options: {
+//         variables
+//     }
+// })(HeaderAdaptat);
 
 export default class App extends Component {
     constructor(props) {
@@ -365,11 +366,21 @@ export default class App extends Component {
         return (
             <Router>
                 <Stylo.LO>
-                    <Route path="/" render={() => (
-                        <HeaderAdaptatAmbSubcategories
-                            subcategoryIdAlState={this.subcategoryIdAlState}
-                        />
+                    <Route exact path="/" render={() => (
+                        <HeaderAdaptat />
+                        // <HeaderAdaptatAmbSubcategories
+                        //     subcategoryIdAlState={this.subcategoryIdAlState}
+                        // />
                     )}/>
+
+                    <Route path="/categoria/:subcategoryId" render={() => (
+                        <HeaderCategorie />
+                    )}/>
+
+                    <Route exact path="/producto/:productId" render={() => (
+                        <HeaderCategorie />
+                    )}/>
+
                     <Route path="/" render={() => (
                             <NavbarAdaptatAmbSubcategories
                                 subcategoryIdAlState={this.subcategoryIdAlState}
@@ -386,14 +397,14 @@ export default class App extends Component {
                                 filtreColor={this.state.filtreColor}
                             />
                     )}/>
-                    <Route exact path="/" render={() => ([
+                    {/*<Route exact path="/" render={() => ([
                         <Stylo.MainContent
                             key="content"
                         > 
     		              <h2>{conf.subtituloPagina}</h2>
                           <h3>{conf.titulo_contenido}</h3>
     		            </Stylo.MainContent>
-                    ])}/>
+                    ])}/>*/}
                     
                     <Route exact path="/categoria/:subcategoryId" render={({ match, history, location }) => {
                         let
