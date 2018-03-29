@@ -366,12 +366,12 @@ export default class App extends Component {
         return (
             <Router>
                 <Stylo.LO>
-                    <Route exact path="/" render={() => (
+                    {/*<Route exact path="/" render={() => (
                         <HeaderAdaptat />
                         // <HeaderAdaptatAmbSubcategories
                         //     subcategoryIdAlState={this.subcategoryIdAlState}
                         // />
-                    )}/>
+                    )}/>*/}
 
                     <Route path="/categoria/:subcategoryId" render={() => (
                         <HeaderCategorie />
@@ -397,14 +397,16 @@ export default class App extends Component {
                                 filtreColor={this.state.filtreColor}
                             />
                     )}/>
-                    {/*<Route exact path="/" render={() => ([
+                    
+                    <Route exact path="/" render={() => ([
                         <Stylo.MainContent
                             key="content"
                         > 
-    		              <h2>{conf.subtituloPagina}</h2>
-                          <h3>{conf.titulo_contenido}</h3>
+                        <h1>{conf.tituloPagina}</h1>
+                        <h2>{conf.subtituloPagina}</h2>
+                        <h3>{conf.titulo_contenido}</h3>
     		            </Stylo.MainContent>
-                    ])}/>*/}
+                    ])}/>
                     
                     <Route exact path="/categoria/:subcategoryId" render={({ match, history, location }) => {
                         let
@@ -803,7 +805,8 @@ export default class App extends Component {
                     <Route path="/" render={() => (
                         <div
                             style={{
-                                gridArea: `ft`
+                                gridArea: `ft`,
+                                minHeight:`10px`,
                             }}
                         >
                             <FootrAdaptatAmbSubcategories

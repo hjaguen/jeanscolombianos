@@ -8,10 +8,11 @@ export const
     LO = styled.div`
         padding: 0px;
         display: grid;
-        grid-template-columns: 1.25fr 1.25fr 0.5fr;
+        grid-template-columns: 1fr 1.2fr 0.8fr;
         grid-template-areas:
-            "h h nb"
-            
+            "nb nb nb"
+            "h h h"
+            "c c c"
             ${bloCol}
             "fot tex min "
             "ft ft ft"
@@ -38,7 +39,7 @@ export const
         z-index: 100;
         font-family: 'Comfortaa', sans-serif;
         margin-left:5%;
-        position:sticky;
+        position:relative;
         float:rigth;
     `,
 
@@ -164,6 +165,10 @@ export const
         font-family: 'Comfortaa', sans-serif;
         font-weight: 700;
 
+        @media (min-width:501px) and (max-width:800px) {
+          font-size: 1.4em;
+        }
+
         @media (min-width:351px) and (max-width:500px) {
           font-size: 1.4em;
         }
@@ -178,16 +183,59 @@ export const
       className: 'maincontent'
     })`
         grid-area: c;
+        margin-left: 10%;
 
-        margin-top: 10%;
-        padding-top:30%;
-        margin-bottom: 5.8%;
+         @media (min-width:1920px){
+            min-height: 850px;
+          } 
 
+          @media (min-width:1600px) and (max-width:1919px){
+            min-height: 750px;
+          } 
+
+          @media (min-width:1366px) and (max-width:1599px){
+            min-height: 600px;
+          }
+
+          @media (min-width:1024px) and (max-width:1365px){
+            min-height: 550px;
+          }
+         
         > h1 {
+          margin-top: 0;
+          font-size: 5em;
+          color: white;
+          text-shadow: 8px 5px 10px white;
           font-family: 'Comfortaa', sans-serif;
-          font-size: 3em;
           font-weight: 700;
-          color:white;
+
+          @media (min-width:1920px) {
+            margin-top: 3em;
+            font-size: 8em;
+          } 
+
+          @media (min-width:1600px) and (max-width:1919px){
+            margin-top: 2em;
+            font-size: 8em;
+          }
+
+           @media (min-width:1366px) and (max-width:1599px){
+            margin-top: 2em;
+            font-size: 6em;
+           }
+
+          @media (min-width:1024px) and (max-width:1365px){
+            margin-top: 1em;
+            font-size: 6em;
+          }
+
+          @media (min-width:351px) and (max-width:500px) {
+          font-size: 2em;
+          }
+
+          @media (max-width:350px) {
+            font-size: 1em;
+          }
         }
 
         > h2 {
@@ -195,6 +243,18 @@ export const
           font-size: 2em;
           font-weight: 500;
           color: white;
+
+          @media (min-width:1920px) {
+            font-size: 5em;
+          } 
+
+          @media (min-width:351px) and (max-width:500px) {
+          font-size: 1.2em;
+          }
+
+          @media (max-width:350px) {
+            font-size: 1.0em;
+          }
         }
 
         > h3 {
@@ -202,6 +262,18 @@ export const
           font-size: 1.7em;
           font-weight: 300;
           color:white;
+
+          @media (min-width:1920px) {
+            font-size: 3em;
+          } 
+
+          @media (min-width:351px) and (max-width:500px) {
+          font-size: 1.0em;
+          }
+
+          @media (max-width:350px) {
+            font-size: 0.8em;
+          }
         }
 
         p {
@@ -220,9 +292,22 @@ export const
 	    text-shadow: 0 1px 0 rgba(255,255,255,.25);
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
+
+        @media (min-width:1920px) {
+            font-size: 2em;
+        } 
+
+        @media (min-width:351px) and (max-width:500px) {
+          font-size: 1.0em;
+        }
+
+        @media (max-width:350px) {
+          font-size: 0.8em;
+        }
       //transform: scaleX(.9);
         &:hover, &:focus {
-          color: rgb(255, 64, 129);
+          //color: rgb(255, 64, 129);
+          color:yellow;
 
         }
     `,
@@ -230,10 +315,10 @@ export const
     aBrand = styled.a.attrs({
       className: 'navbar-brand nombre-marca'
     })`
-      margin-top: 20%;
+      //margin-top: 2%;
       font-size: 2.5em;
       margin-left:10%;
-      margin-bottom:0.3%;
+      //margin-bottom:0.3%;
      
 
       h1 {
@@ -268,6 +353,9 @@ export const
       className: 'mdl-mega-footer'
     })`
       background-color: rgba(255, 255, 255, 0.25);
+      position: relative;
+      bottom: 0px ;
+      width:100%;
     `
     ,
 
@@ -275,7 +363,6 @@ export const
       grid-area: h;
       position: relative;
       margin-bottom:5%;
-      min-height:33.5em;
       `
       ,
 

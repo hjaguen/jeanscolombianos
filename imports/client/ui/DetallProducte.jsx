@@ -161,7 +161,7 @@ export default class MainContentProducte extends Component {
                                             );
                                         }
                                     )
-                                : "Carregant..."
+                                : "Cargando..."
                         }
                     </div>
                 </div>
@@ -181,7 +181,7 @@ export default class MainContentProducte extends Component {
                                 marginBottom: `20px`
                             }}
                           />
-                        : "Carregant..."
+                        : "Cargando..."
                     }
                 </div>
             ,
@@ -190,6 +190,7 @@ export default class MainContentProducte extends Component {
                     style={{
                         gridArea: `tex`
                     }}
+                    className='texDetall'
                 >
                     {this.props.data.producteDETALLS
                         ? <div
@@ -209,7 +210,8 @@ export default class MainContentProducte extends Component {
                                     //text-align: center;
                                     textTransform: `capitalize`,
                                     fontFamily: `'Comfortaa', sans-serif`,
-                                    fontSize: `2.5em`
+                                    fontSize: `2.5em`,
+                                    
                                 }}
                             >{this.props.data.producteDETALLS[0].descripcion}
                             </h2>
@@ -222,7 +224,8 @@ export default class MainContentProducte extends Component {
                                     textAlign: `right`,
                                     display: `block`,
                                     fontWeight: `bolder`,
-                                    fontSize: `1.5em`
+                                    fontSize: `1.5em`,
+                                    
                                 }}
                             >{this.props.data.producteDETALLS[0].nom_marca}
                             </span>
@@ -233,7 +236,8 @@ export default class MainContentProducte extends Component {
                                             background: `rgba(255,255,255,.25)`,
                                             padding: `1em`,
                                             borderRadius: `1em`,
-                                            fontFamily: `'Comfortaa', sans-serif`
+                                            fontFamily: `'Comfortaa', sans-serif`,
+                                            fontSize: `1.5em`,
                                         }}
                                         dangerouslySetInnerHTML={{
                                         __html: sanitizeHtml(this.props.data.producteDETALLS[0].descripcion_long_es)
@@ -242,7 +246,8 @@ export default class MainContentProducte extends Component {
                             }
 
                             <p style={{
-                                    fontFamily: `'Pacifico', cursive`
+                                    fontFamily: `'Pacifico', cursive`,
+                                    fontSize: `1.5em`,
                                 }}>
                                 Para Agregar el el producto al pedido, por favor 
                                 haga click sobre la talla y color que desea agregar 

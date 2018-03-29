@@ -48,9 +48,34 @@ export let
 
     ,
 
-    texto_contenido =
+    bloque_contenido =
 
-          <div><p></p></div>
+    <div className="col-sm-12">
+        <div className="col-sm-4 col-xs-12" style={{marginBottom: `1em`}}>
+            <img className="img-rounded img-responsive" src="./jean-colombiano-push-up-latinmoda.jpg"/>
+            <p>En <strong>Latinmoda</strong> tenemos los mejores <strong>Jeans Colombianos</strong>
+            , fabricados con excelentes materiales y con la mejor calidad. Encuenta aquí la última 
+            <strong> moda de 2018</strong>
+            </p>    
+        </div>
+        <div className="col-sm-4 col-xs-12" style={{marginBottom: `1em`}}>
+            <img className="img-rounded img-responsive" src="./jean-levantacola-colombiano-latinmoda.jpg"/>
+            <p><strong>Jeans Push-up Moldeadores</strong>,
+            <strong> Realzan tu figura</strong>, 
+            <strong> Ventas al por Mayor</strong>,
+            <strong> Moda 100% Colombiana</strong>
+            </p>
+        </div>
+        <div className="col-sm-4 col-xs-12" style={{marginBottom: `1em`}}>
+            <img className="img-rounded img-responsive" src="./falda-de-moda-latinmoda.jpg"/>
+            <p>Luce <strong>Sensual y atractiva</strong> con nuestros 
+            <strong>Sexis Faldas </strong>
+            100% <strong>Colombianas</strong>, perfectas para disfrutar 
+            y lucir Hermosa este <strong>Verano</strong> que se acerca.
+
+            </p>
+        </div>
+    </div>
 
     ,
 

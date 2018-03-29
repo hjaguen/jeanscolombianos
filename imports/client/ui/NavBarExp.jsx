@@ -76,46 +76,69 @@ export default class NavbarAdaptat extends Component {
         return (
             [
             <Stylo.MainNavBar id="menu" className="navbar" role="navigation">
-                <button type="button" className="fa fa-bars fa-2x" data-toggle="modal" data-target="#mainMenu">
+                {/*<button type="button" className="fa fa-bars fa-2x" data-toggle="modal" data-target="#mainMenu">
                    MENU        
-                </button>
+                </button>*/}
+
+                <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul className="nav navbar-nav">
+                            {
+                                this.props.data.subcategories.map(
+                                    (v,i,a) => {
+                                        return (
+                                          <Stylo.liNav>
+                                            <LinkContainer key={i} to={`/categoria/${v.nom_categoria.trim().toLowerCase().replace(/\s+/g, '.')}.${v.categoriaId}`}>
+                                                <Stylo.aLink
+                                                    eventKey={i}
+                                                    onClick={this.canviaSubcat}
+                                                    data-subcategory-id={v.categoriaId}
+                                                >                   {v.nom_categoria}
+                                                </Stylo.aLink>
+                                            </LinkContainer>
+                                          </Stylo.liNav>
+                                        )
+                                    }
+                                )
+                            }
+                        </ul>
+                    </div>
 
                 <button type="button" data-toggle="modal" data-target="#pedido">
                     <i className="fa fa-shopping-basket fa-2x emailytel"></i>
                 </button>
             </Stylo.MainNavBar>
-            ,
+            // ,
 
-            <div className="row">
-                <div className="modal fade" id="mainMenu" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div className="modal-dialog" style={{width:`90%`}} role="document">
-                        <div className="modal-content">
+            // <div className="row">
+            //     <div className="modal fade" id="mainMenu" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+            //         <div className="modal-dialog" style={{width:`90%`}} role="document">
+            //             <div className="modal-content">
                             
-                                <ul className="nav navbar-nav">
-                                    {
-                                        this.props.data.subcategories.map(
-                                            (v,i,a) => {
-                                                return (
-                                                  <Stylo.liNav>
-                                                    <LinkContainer key={i} to={`/categoria/${v.nom_categoria.trim().toLowerCase().replace(/\s+/g, '.')}.${v.categoriaId}`}>
-                                                        <Stylo.aLink
-                                                            eventKey={i}
-                                                            onClick={this.canviaSubcat}
-                                                            data-subcategory-id={v.categoriaId}
-                                                        >                   {v.nom_categoria}
-                                                        </Stylo.aLink>
-                                                    </LinkContainer>
-                                                  </Stylo.liNav>
-                                                )
-                                            }
-                                        )
-                                    }
-                                </ul>
+            //                     <ul className="nav navbar-nav">
+            //                         {
+            //                             this.props.data.subcategories.map(
+            //                                 (v,i,a) => {
+            //                                     return (
+            //                                       <Stylo.liNav>
+            //                                         <LinkContainer key={i} to={`/categoria/${v.nom_categoria.trim().toLowerCase().replace(/\s+/g, '.')}.${v.categoriaId}`}>
+            //                                             <Stylo.aLink
+            //                                                 eventKey={i}
+            //                                                 onClick={this.canviaSubcat}
+            //                                                 data-subcategory-id={v.categoriaId}
+            //                                             >                   {v.nom_categoria}
+            //                                             </Stylo.aLink>
+            //                                         </LinkContainer>
+            //                                       </Stylo.liNav>
+            //                                     )
+            //                                 }
+            //                             )
+            //                         }
+            //                     </ul>
                            
-                        </div>
-                    </div>
-                </div>
-            </div>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
             ,
 
             <div className="row">
